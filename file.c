@@ -12,7 +12,6 @@ printf("%s \n",message);
 }
 i++;
 }
-int main()
 {
        char filecontent[12000];
 	FILE *p=fopen("jabeen1.c","r");	
