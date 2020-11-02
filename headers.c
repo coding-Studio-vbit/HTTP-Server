@@ -5,32 +5,32 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include<string.h>
-void checkstatus();
-void dateandtime();
-void serverused();
-void contentlen();
-void contenttype();
-void connection();
-void lastmodified();
+void attach(char final[]);
+void checkstatus(final);
+void dateandtime(final);
+void serverused(final);
+void contentlen(final);
+void contenttype(final);
+void connection(final);
+void lastmodified(final);
 char *month(int m);
 char *week(int w);
-int main()
+void attach(char final[])
 {
-checkstatus();
-dateandtime();
-serverused();
-lastmodified();
-contentlen();
-contenttype();
-connection();
-return 0;
+checkstatus(final);
+dateandtime(final);
+serverused(final);
+lastmodified(final);
+contentlen(final);
+contenttype(final);
+connection(final);
 }
-void checkstatus()
+void checkstatus(final)
 {
-char status[100]="HTTP/1.1 200 OK";
-printf("%s \n",status);
+char status[100]="HTTP/1.1 200 OK \n";
+strcat(final,status);
 }
-void dateandtime()
+void dateandtime(final)
 {
 char dt[1024];
 int a,b;
@@ -42,32 +42,31 @@ char cm[30];
 char cw[30];
 strcpy(cm,month(b));
 strcpy(cw,week(a));
-sprintf(dt,"Date: %s,%d %s %d %d:%d:%d GMT",cw,ptm->tm_mday,cm,ptm->tm_year+1900,ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
-printf("%s \n",dt);
+sprintf(dt,"Date: %s,%d %s %d %d:%d:%d GMT \n",cw,ptm->tm_mday,cm,ptm->tm_year+1900,ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
+strcat(final,dt);
 }
-void serverused()
+void serverused(final)
 {
-char s[50]= "Server: CSSOC";
-printf("%s \n",s);
+char s[50]= "Server: CSSOC \n";
+strcat(final,s);
 }
-void contentlen()
+void contentlen(final)
 {
-char a[20] ="hello";
 char conlen[100];
-sprintf(conlen,"Content-Length: %ld bytes",strlen(a));
-printf("%s \n",conlen);
+sprintf(conlen,"Content-Length: %ld bytes \n",strlen(final));
+strcat(final,conlen);
 }
-void contenttype()
+void contenttype(final)
 {
-char contyp[50] = "Content-Type: text";
-printf("%s \n",contyp);
+char contyp[50] = "Content-Type: text/html \n";
+strcat(final,contyp);
 }
-void connection()
+void connection(final)
 {
-char connect[30]="Connection: closed";
-printf("%s \n",connect);
+char connect[30]="Connection: closed \n";
+strcat(final,connect);
 }
-void lastmodified()
+void lastmodified(final)
 {
 char lm[1024];
 int x,y;
@@ -81,8 +80,8 @@ char M[30];
 char W[30];
 strcpy(M,month(y));
 strcpy(W,week(x));
-sprintf(lm,"last modified: %s,%d %s %d %d:%d:%d GMT",W,foo->tm_mday,M,foo->tm_year+1900,foo->tm_hour,foo->tm_min,foo->tm_sec);
-printf("%s \n",lm);
+sprintf(lm,"last modified: %s,%d %s %d %d:%d:%d GMT \n",W,foo->tm_mday,M,foo->tm_year+1900,foo->tm_hour,foo->tm_min,foo->tm_sec);
+strcat(final,lm);
 }
 char * month(int m)
 {
