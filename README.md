@@ -1,2 +1,2 @@
 # HTTP-Server
-An HTTP Server built from scratch in C
+An basic HTTP Server built from scratch in C
