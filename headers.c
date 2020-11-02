@@ -6,13 +6,13 @@
 #include <unistd.h>
 #include<string.h>
 void attach(char final[]);
-void checkstatus(final);
-void dateandtime(final);
-void serverused(final);
-void contentlen(final);
-void contenttype(final);
-void connection(final);
-void lastmodified(final);
+void checkstatus(char final[]);
+void dateandtime(char final[]);
+void serverused(char final[]);
+void contentlen(char final[]);
+void contenttype(char final[]);
+void connection(char final[]);
+void lastmodified(char final[]);
 char *month(int m);
 char *week(int w);
 void attach(char final[])
@@ -25,12 +25,12 @@ contentlen(final);
 contenttype(final);
 connection(final);
 }
-void checkstatus(final)
+void checkstatus(char final[])
 {
 char status[100]="HTTP/1.1 200 OK \n";
 strcat(final,status);
 }
-void dateandtime(final)
+void dateandtime(char final[])
 {
 char dt[1024];
 int a,b;
@@ -45,28 +45,28 @@ strcpy(cw,week(a));
 sprintf(dt,"Date: %s,%d %s %d %d:%d:%d GMT \n",cw,ptm->tm_mday,cm,ptm->tm_year+1900,ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
 strcat(final,dt);
 }
-void serverused(final)
+void serverused(char final[])
 {
 char s[50]= "Server: CSSOC \n";
 strcat(final,s);
 }
-void contentlen(final)
+void contentlen(char final[])
 {
 char conlen[100];
 sprintf(conlen,"Content-Length: %ld bytes \n",strlen(final));
 strcat(final,conlen);
 }
-void contenttype(final)
+void contenttype(char final[])
 {
 char contyp[50] = "Content-Type: text/html \n";
 strcat(final,contyp);
 }
-void connection(final)
+void connection(char final[])
 {
 char connect[30]="Connection: closed \n";
 strcat(final,connect);
 }
-void lastmodified(final)
+void lastmodified(char final[])
 {
 char lm[1024];
 int x,y;
