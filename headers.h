@@ -1,0 +1,10 @@
+void checkstatus(char final[]);
+void dateandtime(char final[]);
+void serverused(char final[]);
+void contentlen(char final[]);
+void contenttype(char final[]);
+void connection(char final[]);
+void lastmodified(char final[]);
+char *month(int m);
+char *week(int w);
+void attach(char final[]);
