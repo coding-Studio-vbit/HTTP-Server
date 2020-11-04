@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include<string.h>
+#include "file.h"
+int main()
+{
 void array(FILE *fp ,char filecontent [])
 {
 int i;
@@ -12,4 +15,5 @@ printf("%s \n",message);
 }
 i++;
 }
-
+return 0;
+}

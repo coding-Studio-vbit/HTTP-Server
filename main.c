@@ -4,6 +4,8 @@
 #include<errno.h>
 #include<arpa/inet.h>
 #include<sys/socket.h>
+#include "file.h"
+#include "headers.h"
 short SocketCreate(void)
 {
 short hSocket;
@@ -62,6 +64,13 @@ printf("recv failed");
 break;
 }
 printf("client reply:%s\n",client_message);
+FILE *fp;
+char filecontent[4000];
+char response[10000]=array(fp,filecontent[4000]);
+printf("%s",response[10000]);
+if(write(sock,response,sizeof(response),0)==-1);{
+fprintf(stderr,"send error\n");
+}
 }
 return 0;
 }
