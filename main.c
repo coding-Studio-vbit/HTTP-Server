@@ -26,7 +26,7 @@ return iRetval;
 }
 int main(int argc,char *argv[])
 {
-int socket_desc,sock,clientLen,read_size;
+int socket_desc,sock,clientLen,read_size,recevied;
 struct sockaddr_in server, client;
 char client_message[20000]={0};
 char message[100]={0};
@@ -64,13 +64,24 @@ printf("recv failed");
 break;
 }
 printf("client reply:%s\n",client_message);
-FILE *fp;
-char filecontent[4000];
-char response[10000]=array(fp,filecontent[4000]);
-printf("%s",response[10000]);
-if(write(sock,response,sizeof(response),0)==-1);{
-fprintf(stderr,"send error\n");
-}
+void checkstatus(char final[]);
+void dateandtime(char final[]);
+void serverused(char final[]);
+void contentlen(char final[]);
+void contenttype(char final[]);
+void connection(char final[]);
+void lastmodified(char final[]);
+char *month(int m);
+char *week(int w);
+void attach(char final[]);
+void array(FILE *fp,char filecontent[]);
+char response[10000];
+strcat(message,response);
+memset(response,0,sizeof(response));
+int total=sizeof(response)-1;
+printf("response:\n");
+if(sock>0)
+	send(sock,response,strlen(response),0);
 }
 return 0;
 }
