@@ -53,7 +53,7 @@ strcat(final,s);
 void contentlen(char final[])
 {
 char conlen[100];
-sprintf(conlen,"Content-Length: %ld bytes \n",strlen(final));
+sprintf(conlen,"Content-Length: %d bytes \n",200);
 strcat(final,conlen);
 }
 void contenttype(char final[])
